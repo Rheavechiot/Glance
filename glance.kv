@@ -1,0 +1,99 @@
+#:import hex kivy.utils.get_color_from_hex
+WindowManager:
+    Home:
+    About:
+<Home>:
+    name:"home"
+
+    # Creating Canvas
+    canvas:
+        Color:
+            rgba: hex('#001a1a')
+        Rectangle:
+            size:2000,1000
+            pos:self.pos
+    BoxLayout:
+        spacing:10
+        orientation:'vertical'
+        BoxLayout:
+            orientation:'horizontal'
+            BoxLayout:
+                orientation:'vertical'
+                Image:
+                    source: 'C://Users/vechiot premarajan/PycharmProjects/Glance/kivy_venv/glance_logo.png'
+                    height:250
+                    size_hint_x:None
+                    size_hint_y:None
+                    width:250
+                    allow_stretch:True
+                    pos_hint:{'right':0.9}
+            BoxLayout:
+                orientation:'vertical'
+                Label:
+                    text:'Glance'
+                    font_size:70
+                    outline_color:hex('#ffffff')
+                    font_name:'Kingthings_Foundation.ttf'
+                    col_default_width:20
+                    col_default_height:20
+                    pos_hint:{'right':0.6}
+
+        BoxLayout:
+            orientation:'horizontal'
+            spacing:10
+            Button:
+                text:"Detect live"
+                size:100,100
+                background_normal:''
+                font_size:40
+                color:hex('#001a1a')
+                font_name:'Kingthings_Foundation.ttf'
+                on_press:root.live_detection()
+            Button:
+                text:"Detect from image"
+                size:100,100
+                font_size:40
+                background_normal:''
+                color:hex('#001a1a')
+                font_name:'Kingthings_Foundation.ttf'
+                on_press:root.image_detect()
+        BoxLayout:
+            orientation:'horizontal'
+            spacing:10
+            Button:
+                text:"Help"
+                size:100,100
+                background_normal:''
+                color:hex('#001a1a')
+                font_size:40
+                font_name:'Kingthings_Foundation.ttf'
+                on_release:
+                    app.root.current="about"
+            Button:
+                text:"Exit"
+                size:100,100
+                background_normal:''
+                color:hex('#001a1a')
+                font_size:40
+                font_name:'Kingthings_Foundation.ttf'
+                on_press:app.stop()
+<About>:
+    name:"about"
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: hex('#001a1a')
+            Rectangle:
+                size:2000,1000
+                pos:self.pos
+        Label:
+            text:'About'
+            font_size:70
+            outline_color:hex('#ffffff')
+            font_name:'Kingthings_Foundation.ttf'
+            pos:(9,300)
+        Label:
+            text:'Glance is an object detection app which runs on Windows. Object detection is a computer technology related to computer vision \n and image processing that deals with detecting instances of semantic objects of a certain class from a digital image or video. \n The app uses YOLO(You Only Look Once) deep learning algorithm. YOLO is the fastest new approach to object detection. YOLO \n frame object detection as a regression problem spatially separated bounding boxes and associated class probabilities. \n YOLO makes use of a single neutral network predicts bounding boxes and class probability directly from full images in one \n evaluation. To detect the object present in an image : \n -> Click on detect from image \n -> Select an image from your local directory \n You are good to go!! \n To detect objects live just click on detect live button, It  is that easy!! \n'
+            font_size:20
+            outline_color:hex('#ffffff')
+            pos:(50,100)
